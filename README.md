@@ -9,3 +9,4 @@ This program takes NFL Daily Lines (www.espn.com/nfl/lines) for each game this w
 Use (NOTE - THIS SCRIPT ONLY WORKS DURING SEASON)
 -----------
 Used for CBS Sports' Confidence Pool Challenge fantasy game.
+Currently only works with Python 2
