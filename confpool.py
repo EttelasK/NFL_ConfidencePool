@@ -109,5 +109,5 @@ df = df.sort_values(by='ABS', ascending=False)
 df = df[['AWAY','HOME','ADVANTAGE','AVERAGE']]
 
 
-print df
+print(df)
 
