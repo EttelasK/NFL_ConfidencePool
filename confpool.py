@@ -74,14 +74,17 @@ for bet in soup.find_all(style="text-align:center;"):
             i += 1
         elif i == 5:
             point_spread_5 = sign(adv, float(line[0]))
-            spreads = (point_spread_1, point_spread_2,point_spread_3,point_spread_4,point_spread_5)
+            i += 1
+        elif i == 6:
+            point_spread_6 = sign(adv, float(line[0]))
+            spreads = (point_spread_1, point_spread_2,point_spread_3,point_spread_4,point_spread_5,point_spread_6)
             points_list.append(spreads)
             i = 1
 
 def table_join(list1, list2):
     i = 0
     count = len(list1)
-    table = [('HOME', 'AWAY', 'LINE1', 'LINE2','LINE3','LINE4','LINE5')]
+    table = [('HOME', 'AWAY', 'LINE1', 'LINE2','LINE3','LINE4','LINE5','LINE6')]
     while i < count:
         home = list1[i][0]
         away = list1[i][1]
@@ -90,7 +93,8 @@ def table_join(list1, list2):
         line3 = list2[i][2]
         line4 = list2[i][3]
         line5 = list2[i][4]
-        row = (home, away, line1, line2, line3, line4, line5)
+        line6 = list2[i][5]
+        row = (home, away, line1, line2, line3, line4, line5, line6)
         table.append(row)
         i = i+1
     return table
@@ -100,7 +104,7 @@ df = pd.DataFrame(data)
 df.columns = df.iloc[0]
 df = df[1:]
 
-df['AVERAGE'] = df[["LINE1","LINE2","LINE3","LINE4","LINE5"]].mean(axis=1)
+df['AVERAGE'] = df[["LINE1","LINE2","LINE3","LINE4","LINE5","LINE6"]].mean(axis=1)
 df['ADVANTAGE'] = df['AVERAGE'].apply(lambda x: 'AWAY' if x <= 0.0 else 'HOME' )
 
 df = df[['HOME','AWAY','AVERAGE','ADVANTAGE']]
