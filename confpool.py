@@ -1,5 +1,3 @@
-import re
-import csv
 import pandas as pd
 import urllib2
 from bs4 import BeautifulSoup
@@ -17,7 +15,7 @@ req = urllib2.Request(site, headers=hdr)
 req.add_header('User-agent', 'Mozilla/5.0 (Linux i686)')
 html = urllib2.urlopen(req).read()
 
-table = [('Home','Away','Westgate','BOVADA','BETONLINE','SportsBetting','5Dimes')]
+table = [("Home","Away","Westgate","Caesar's","William Hill","Wynn","CG Technology","Unibet")]
 
 soup = BeautifulSoup(html, 'html.parser')
 
